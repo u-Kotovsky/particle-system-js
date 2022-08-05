@@ -1,0 +1,117 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    min-height: 100vh;
+    background: #0c192c;
+}
+.container
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.flame
+{
+    position: relative;
+    display: flex;
+}
+
+.flame span
+{
+    position: relative;
+    width: 16px;
+    height: 16px;
+    background: #c2180c;
+    margin: 0 4p;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #c2360c44,
+    0 0 50px #c2180c,
+    0 0 100px #c2180c;
+    animation: particles 15s linear infinite;
+    animation-duration: calc(120s / 12);
+}
+
+.flame span:nth-child(even) {
+    background: #ff1100;
+    box-shadow: 0 0 0 10px #ff110044,
+    0 0 50px #ff1100,
+    0 0 100px #ff1100;
+}
+
+@keyframes particles {
+    0%
+    {
+        transform: translateY(100vh) translateX(-10vw) scale(1);
+    }
+    100%
+    {
+        transform: translateY(-10vh) translateX(100vw) scale(1);
+    }
+}
+
+.flame-parent {
+    position: absolute;
+    bottom: 10vh;
+    animation: particle-noise-y 10s infinite alternate ease;
+}
+
+@keyframes upside-down {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
+.particle-visual {
+    width: 16px;
+    height: 16px;
+
+    position: fixed;
+
+    border-radius: 50%;
+
+    background: var(--color);
+    box-shadow: 
+        0 0 0 10px var(--color),
+        0 0 20px var(--color),
+        0 0 150px var(--color);
+
+    animation: particle-visual calc(100s / var(--time)) alternate infinity;
+
+    filter: blur(8px) saturate(1000%);
+}
+
+.particle-x {
+    animation: particle-move-x calc(120s / var(--x)) forwards linear;
+}
+
+.particle-y {
+    animation: particle-move-y calc(100s / var(--y)) infinite alternate ease;
+}
+
+@keyframes particle-visual {
+    0% { opacity: 0; transform: scale(0) }
+    50% { opacity: 1; transform: scale(1) }
+    100% { opacity: 0; transform: scale(0) }
+}
+
+@keyframes particle-move-x {
+    0% { transform: translateX(-10vw); }
+    100% { transform: translateX(110vw); }
+}
+
+@keyframes particle-move-y {
+    0% { transform: translateY(10vh); }
+    100% { transform: translateY(-110vh); }
+}
+
+@keyframes particle-noise-y {
+    0% { transform: translateY(5vh) }
+    100% { transform: translateY(-5vh) }
+}
